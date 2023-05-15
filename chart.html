@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chart</title>
+    <style>
+       
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #tradingview_585c7{
+            width: 100%;
+            height: 100vh;
+
+        }
+       
+    </style>
+</head>
+<body>
+
+
+  <!-- Trading View Chart Widget here blow is source code and hight and width is set with the id #tradingview_585c7 -->
+  <!-- for more refer "https://in.tradingview.com/widget/" -->
+
+
+
+
+
+   <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div id="tradingview_585c7"></div>
+    <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL stock chart</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget(
+    {
+    "autosize": true,
+    "symbol": "NASDAQ:AAPL",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "light",
+    "style": "1",
+    "locale": "in",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "allow_symbol_change": true,
+    "details": true,
+    "calendar": true,
+    "studies": [
+      "STD;SMA",
+      "STD;EMA"
+    ],
+    "container_id": "tradingview_585c7"
+  }
+    );
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</body>
+</html>

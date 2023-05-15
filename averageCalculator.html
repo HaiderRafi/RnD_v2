@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Stock Average Calculator</title>
+    <style>
+        * {
+            margin-top: 10px;
+        }
+
+        .btn-calculate {
+            margin-left: 10px;
+        }
+
+        .domDisplay {
+            margin-left: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        h3 {
+            display: inline-block;
+        }
+
+        @media(max-width:700px) {
+            h1 {
+                font-size: 35px;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .btn-calculate {
+                margin-left: 10px;
+            }
+
+            .domDisplay {
+                margin-left: 10px;
+            }
+
+            .form-control {
+                width: 98%;
+            }
+
+            * {
+                margin-top: 10px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>R&D Stock Average <span class="badge badge-secondary">Calculator</span></h1> <br>
+    <div class="container">
+        <div class="firstPurchase">
+            <h2>First Purchase</h2>
+            <form>
+                <label>Units:</label> <br>
+                <!-- <input id="firstStockUnit" type="number"> <br> <br> -->
+                <input type="number" class="form-control" id="firstStockUnit"> <br>
+                <label>Price Per Shair:</label> <br>
+                <!-- <input id="firstStockPrice" type="number"> <br> -->
+                <input type="number" class="form-control" id="firstStockPrice"> <br>
+            </form>
+        </div>
+
+        <div class="secondPurchase">
+            <h2>Second Purchase</h2>
+            <form>
+                <label>Units:</label> <br>
+                <!-- <input id="secondStockUnit" type="number"> <br> <br> -->
+                <input type="number" class="form-control" id="secondStockUnit"> <br>
+                <label>Price Per Shair:</label> <br>
+                <!-- <input id="secondStockPrice" type="number"> <br> -->
+                <input type="number" class="form-control" id="secondStockPrice"> <br>
+            </form>
+        </div>
+    </div> <br>
+
+    <div class="domDisplay">
+        <div class="totalUnits"></div>
+        <div class="totalPrice"></div>
+        <div class="average"></div>
+    </div>
+
+    <button type="button" class=" btn-calculate btn btn-success">Calculate Average</button>
+    <button type="button" class=" btn-clear btn btn-danger">Clear Fields</button>
+
+
+    <!-- <input type="number" class="form-control" id="inputPassword" placeholder="Password" > -->
+
+
+
+    <script>
+        let firstStockUnit = document.querySelector('#firstStockUnit');
+        let firstStockPrice = document.querySelector('#firstStockPrice');
+        let secondStockUnit = document.querySelector('#secondStockUnit');
+        let secondtStockPrice = document.querySelector('#secondStockPrice');
+        let form = document.querySelectorAll('form');
+        let btnCalculate = document.querySelector('.btn-calculate');
+        let btnClear = document.querySelector('.btn-clear');
+        // console.log(btnClear);
+
+        let totalUnits = document.querySelector('.totalUnits');
+        let totalPrice = document.querySelector('.totalPrice');
+        let average = document.querySelector('.average');
+
+
+
+        btnClear.addEventListener('click', () => {
+            form.forEach((data) => {
+                data.reset();
+            })
+            totalUnits.innerHTML = "";
+            totalPrice.innerHTML = "";
+            average.innerHTML = "";
+        });
+
+        btnCalculate.addEventListener('click', () => {
+            let firstTotalAmount = (firstStockPrice.value) * (firstStockUnit.value);
+            // console.log(firstTotalAmount);
+
+            let secondTotalAmount = (secondtStockPrice.value) * (secondStockUnit.value);
+            // console.log(secondTotalAmount);
+
+            let finalTotalAmount = (firstTotalAmount) + (secondTotalAmount);
+
+            let aParseUnitOne = parseInt(firstStockUnit.value);
+            let bParseUnitTwo = parseInt(secondStockUnit.value);
+
+            let finalTotalUnits = aParseUnitOne + bParseUnitTwo;
+            // console.log(finalTotalUnits);
+
+            let finalAverage = finalTotalAmount / finalTotalUnits;
+            // console.log(finalAverage);
+
+            let finalAverageTwoDecimal = finalAverage.toFixed(2);
+            // console.log(finalAverageTwoDecimal);
+
+
+            //x----------------x----------------x------------------x------------------
+            totalUnits.innerHTML = `<h3>Total Units: ${finalTotalUnits}</h3>`
+            totalPrice.innerHTML = `<h3>Total Price: ${finalTotalAmount}</h3>`
+            average.innerHTML = `<h3>Average: ${finalAverageTwoDecimal}</h3>`
+
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>
